@@ -177,8 +177,21 @@ var cardListNormal = [ //NormalCards
 
     },
     {
+        name: "hierro",
+        img: "Hierro.png"
+
+    },
+    {
         name: "fosforo",
         img: "Fosforo.png"
+    },
+    {
+        name: "fosforo",
+        img: "Fosforo.png"
+    },
+    {
+        name: "sodio",
+        img: "Sodio.png"
     },
     {
         name: "sodio",
@@ -188,9 +201,13 @@ var cardListNormal = [ //NormalCards
         name: "potasio",
         img: "Potasio.png"
     },
+    {
+        name: "potasio",
+        img: "Potasio.png"
+    },
 ];
 
-
+/*
 
 //Recibe el parametro de la dificultad
 var currentURL = new URL(window.location.href);
@@ -217,17 +234,16 @@ var dato = currentURL.searchParams.get("level");
             cardListNormal.forEach(card => {
             cardContainer.appendChild(cardPrototype(card.name, card.img));
             });
-
-            
             break;
+
         default:
-            console.log("no llego");
+            console.log("no llegaron cartas");
     }
 
+*/
 
-
-cardList = shuffle(cardList);
-cardList.forEach(card => {
+cardListNormal = shuffle(cardListNormal);
+cardListNormal.forEach(card => {
     cardContainer.appendChild(cardPrototype(card.name, card.img));
 })
 
