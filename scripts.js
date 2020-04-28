@@ -1,6 +1,4 @@
 
-
-
 //Generate the cards on html code
 function cardPrototype(dataFramework, src) {
     let container = document.createElement("div");
@@ -227,11 +225,11 @@ var dato = currentURL.searchParams.get("level");
     }
 
 
-/*
+
 cardList = shuffle(cardList);
 cardList.forEach(card => {
     cardContainer.appendChild(cardPrototype(card.name, card.img));
-})*/
+})
 
 //Atributtes
 const cards = document.querySelectorAll('.memory-card');
@@ -267,14 +265,13 @@ function flipCard(){
         
         return;
     }
-        // Second Click!!
-        hasFlippedCard =false;
-        secondCard = this;
+    // Second Click!!
+    hasFlippedCard =false;
+    secondCard = this;
+
+    console.log({hasFlippedCard,secondCard});
     
-        console.log({hasFlippedCard,secondCard});
-        
-        checkFormatch();
-    
+    checkFormatch();
     
 }
 
@@ -288,39 +285,28 @@ function checkFormatch(){
 
     */
 
-    
-
-
-
     //Option for check, for any trouble!
+    if(firstCard.dataset.framework ===  secondCard.dataset.framework) {
+        // It's a Match 
+        disableCards();
+        playAudioC();
 
-    if(firstCard.dataset.framework === 
-        secondCard.dataset.framework){
-            // It's a Match 
-            disableCards();
-            playAudioC();
-          
-           
-        
-    }else{
-            // Not a Match
-            unFlipcards();
-            playAudioI();
-           
+    } else {
+        // Not a Match
+        unFlipcards();
+        playAudioI();  
     }
 
 }
 
-
-    //Make de Cards lose de effect, which means, the user accert on the match
+//Make de Cards lose de effect, which means, the user accert on the match
 function disableCards(){
     firstCard.removeEventListener('click', flipCard);
-     firstCard.removeEventListener('click', flipCard);
-
-        resetBoard();
+    firstCard.removeEventListener('click', flipCard);
+    resetBoard();
 }
 
-    //Denied the Flip when both cards are no equal and returns to the original form
+//Denied the Flip when both cards are no equal and returns to the original form
 function unFlipcards(){
     lockBoard = true;
 
@@ -328,8 +314,6 @@ function unFlipcards(){
 
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
-        
-        
 
         lockBoard = false;
     },1000);
@@ -337,8 +321,6 @@ function unFlipcards(){
 }
 
 function resetBoard(){
-   
-
     [ hasFlippedCard, lockBoard] = [false,false];
     [ firstCard, secondCard] = [null,null];
 }
@@ -351,7 +333,7 @@ function resetBoard(){
     });
 })();
 
-////Manage the audio on the match 
+//Manage the audio on the match 
 function playAudioC(){
     soundCorrect.play();
 }
@@ -365,7 +347,5 @@ function timer1(){
     if(tm<=0){clearInterval();window.location.href='ot raweb.htm'}
     else{tm--}
 }
-
-
 
 cards.forEach(card => card.addEventListener('click',flipCard))
